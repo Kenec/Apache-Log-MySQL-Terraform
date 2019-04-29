@@ -15,6 +15,13 @@ resource "aws_security_group" "apache_sg" {
     protocol    = "tcp"
     cidr_blocks = ["${var.myip}"] // specify your IP address for remote ssh
   }
+  
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
 
 resource "aws_security_group" "mysql_sg" {
@@ -33,5 +40,12 @@ resource "aws_security_group" "mysql_sg" {
     to_port     = 22
     protocol    = "tcp"
     cidr_blocks = ["${var.myip}"] // specify your IP address for remote ssh
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 }

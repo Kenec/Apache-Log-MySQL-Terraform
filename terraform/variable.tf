@@ -19,3 +19,7 @@ variable "ubuntu_ami" {
 variable "myip" {
   type = "string"
 }
+
+variable "key_name" {
+  type = "string"
+}
